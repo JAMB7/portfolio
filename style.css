@@ -127,18 +127,18 @@ h1 {
   max-width: 900px;
 
   margin: auto;
-  padding: 20px 20px;
+  padding: 15px 20px;
 }
 
 h2 {
   font-size: 2rem;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
   color: #ffd6ff;
 }
 
 .section p {
   line-height: 1.5;
-  margin: 5px 0;
+  margin: 4px 0;
   color: #e5dcff;
 }
 
@@ -230,4 +230,12 @@ h2 {
   h2 {
     font-size: 1.6rem;
   }
+}
+.edu-item {
+  margin-bottom: 10px;
+}
+
+.edu-item p {
+  margin: 4px 0;
+  line-height: 1.4;
 }
