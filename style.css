@@ -1,22 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Comfortaa', sans-serif;
   color: #fef6ff;
-  height: 100vh;
-  overflow: hidden;
-
-  /* lo-fi night gradient */
   background: linear-gradient(180deg, #0b1026, #1a1b3a, #2a1b3f);
+  min-height: 100vh;
+  position: relative;
 }
 
-/* ⭐ star layer */
+/* stars */
 body::before {
   content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  inset: 0;
+
   background-image:
     radial-gradient(white 1px, transparent 1px),
     radial-gradient(white 1px, transparent 1px),
@@ -29,48 +31,202 @@ body::before {
   z-index: -1;
 }
 
-/* soft glow mist */
+/* mist glow */
 body::after {
   content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 50% 40%, rgba(255, 182, 255, 0.12), transparent 60%);
+  position: fixed;
+  inset: 0;
+
+  background:
+    radial-gradient(circle at 50% 40%,
+    rgba(255, 182, 255, 0.12),
+    transparent 60%);
+
   z-index: -1;
 }
 
-/* center layout */
-header {
-  height: 100vh;
+/* NAVBAR */
+nav {
+  width: 100%;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  backdrop-filter: blur(10px);
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fef6ff;
+
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #ffd6ff;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+
   display: flex;
   flex-direction: column;
+
   justify-content: center;
   align-items: center;
+
   text-align: center;
+
+  padding: 100px 20px;
 }
 
-/* 🌸 IMPORTANT: start hidden (JS controls fade-in) */
-h1, p {
-  opacity: 0;
-}
-
-/* title styling */
 h1 {
-  font-size: 2.8rem;
-  font-weight: 500;
+  font-size: 4rem;
   color: #ffd6ff;
-  text-shadow: 0 0 18px rgba(255, 180, 255, 0.5);
+
   margin-bottom: 10px;
+
+  text-shadow:
+    0 0 18px rgba(255, 180, 255, 0.5);
 }
 
-/* subtitle styling */
-p {
-  font-size: 1.4rem;
+.hero p {
+  font-size: 1.6rem;
   color: #bcd4ff;
-  letter-spacing: 1px;
 }
 
-/* optional smooth feel if JS doesn't trigger instantly */
-h1, p {
-  transition: opacity 1.5s ease;
+.profile-pic {
+  width: 180px;
+  height: 180px;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
+  margin-top: 30px;
+
+  border: 3px solid rgba(255,255,255,0.3);
+
+  box-shadow:
+    0 0 25px rgba(255,255,255,0.15);
+}
+
+/* GENERAL SECTIONS */
+.section {
+  max-width: 900px;
+
+  margin: auto;
+  padding: 80px 20px;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ffd6ff;
+}
+
+.section p {
+  line-height: 1.8;
+  color: #e5dcff;
+}
+
+/* SKILLS */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.skills span {
+  padding: 12px 20px;
+
+  background: rgba(255,255,255,0.08);
+
+  border-radius: 30px;
+
+  backdrop-filter: blur(8px);
+}
+
+/* CONTACT FORM */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 15px;
+
+  border: none;
+  border-radius: 15px;
+
+  background: rgba(255,255,255,0.08);
+
+  color: white;
+
+  font-family: inherit;
+}
+
+.contact-form button {
+  padding: 15px;
+
+  border: none;
+  border-radius: 15px;
+
+  background: #ffd6ff;
+
+  color: #1a1b3a;
+
+  font-family: inherit;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  transform: scale(1.03);
+}
+
+/* PAGE SPACING */
+.page-content {
+  padding-top: 100px;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+  }
+
+  .profile-pic {
+    width: 140px;
+    height: 140px;
+  }
+
+  nav ul {
+    gap: 15px;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
 }
