@@ -1,13 +1,13 @@
 window.addEventListener("load", () => {
 
-  const hero = document.querySelector(".hero");
+  const card = document.querySelector(".hero-card");
 
-  if (hero) {
-    hero.style.opacity = 0;
+  if (card) {
+    card.style.opacity = 0;
 
     setTimeout(() => {
-      hero.style.transition = "2s ease";
-      hero.style.opacity = 1;
+      card.style.transition = "1.5s ease";
+      card.style.opacity = 1;
     }, 200);
   }
 
