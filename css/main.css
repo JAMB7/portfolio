@@ -180,3 +180,10 @@ a:hover {
   nav ul { gap: 15px; }
   h2 { font-size: 1.6rem; }
 }
+.hero h1 {
+  margin-bottom: 2px;
+}
+
+.hero p {
+  margin: 2px 0;
+}
