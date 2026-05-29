@@ -1,3 +1,5 @@
+// javascript for the website
+
 window.addEventListener("load", () => {
 
   const hero = document.querySelector(".hero");
