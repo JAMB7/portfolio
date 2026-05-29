@@ -32,20 +32,15 @@ PROJECTS GRID
    ART GRID (separate from projects)
    ========================= */
 .art-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  margin-top: 15px;
+  display: block;
 }
 
 .art-grid img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.05);
-  box-shadow: 0 0 20px rgba(255,255,255,0.08);
-  transition: 0.3s ease;
+  width: auto;       /* keep original width */
+  height: auto;      /* keep original height */
+  max-width: none;   /* IMPORTANT: stop resizing */
+  display: block;
+  margin-bottom: 20px;
 }
 
 .art-grid img:hover {
