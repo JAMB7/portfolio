@@ -192,7 +192,8 @@ a:hover {
    LISTS INSIDE SECTIONS
    ========================= */
 .section ul {
-  margin-bottom: 20px;
+  margin: 8px 0 18px 18px;
+  padding: 0;
   line-height: 1.6;
   color: #e5dcff;
 }
