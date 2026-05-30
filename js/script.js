@@ -20,7 +20,7 @@ window.addEventListener("load", () => {
 
 
 // =========================
-// TRANSLATION SYSTEM
+// TRANSLATION SYSTEM (FULL FIX)
 // =========================
 
 const translations = {
@@ -32,12 +32,26 @@ const translations = {
 
     heroTitle: "✨ Hey, Welcome to my portfolio.",
     heroSubtitle: "I'm Julisha A.M Busghit",
+    studentNr: "Student nr.: BI/1122/045",
 
     aboutTitle: "About me 👩🏽‍🦲",
-    skillsTitle: "Skills",
+    aboutText:
+      "A curious, open-minded, and thoughtful person who enjoys learning about new ideas and perspectives, exploring different areas of knowledge, and embracing new experiences.",
+
+    aboutFocusTitle: "I am currently focused on professional growth through:",
+    aboutFocus1: "New experiences",
+    aboutFocus2: "Collaboration",
+    aboutFocus3: "Continuous learning",
+
+    interestsTitle: "Interests 🖼️",
+
     educationTitle: "Education 📚",
+
     contactTitle: "Contact me",
-    sendMessage: "Send me a message"
+    sendMessage: "Send me a message",
+
+    phone: "Phone:",
+    email: "Email:"
   },
 
   nl: {
@@ -48,12 +62,26 @@ const translations = {
 
     heroTitle: "✨ Hey, welkom op mijn portfolio.",
     heroSubtitle: "Ik ben Julisha A.M Busghit",
+    studentNr: "Student nr.: BI/1122/045",
 
     aboutTitle: "Over mij 👩🏽‍🦲",
-    skillsTitle: "Vaardigheden",
+    aboutText:
+      "Een nieuwsgierig, open-minded en bedachtzaam persoon die graag leert over nieuwe ideeën en perspectieven, verschillende kennisgebieden verkent en nieuwe ervaringen omarmt.",
+
+    aboutFocusTitle: "Ik richt mij momenteel op professionele groei door:",
+    aboutFocus1: "Nieuwe ervaringen",
+    aboutFocus2: "Samenwerking",
+    aboutFocus3: "Voortdurend leren",
+
+    interestsTitle: "Interesses 🖼️",
+
     educationTitle: "Opleiding 📚",
+
     contactTitle: "Contact opnemen",
-    sendMessage: "Stuur mij een bericht"
+    sendMessage: "Stuur mij een bericht",
+
+    phone: "Telefoon:",
+    email: "E-mail:"
   }
 };
 
@@ -62,74 +90,34 @@ let currentLang = "en";
 function translatePage(lang) {
   currentLang = lang;
 
-  // NAV LINKS
-  document.querySelectorAll("[data-key]").forEach(el => {
-    const key = el.getAttribute("data-key");
+  // Translate EVERYTHING using data-i18n
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
     if (translations[lang][key]) {
       el.textContent = translations[lang][key];
     }
   });
 
-  // HERO TEXT
-  const heroTitle = document.querySelector(".hero h1");
-  const heroSubtitle = document.querySelector(".hero p");
-
-  if (heroTitle) heroTitle.textContent = translations[lang].heroTitle;
-  if (heroSubtitle) heroSubtitle.textContent = translations[lang].heroSubtitle;
-
-  // SECTION TITLES (safe matching)
-  const h2s = document.querySelectorAll("h2");
-
-  h2s.forEach(h2 => {
-    const text = h2.textContent.trim();
-
-    if (text.includes("About me") || text.includes("Over mij")) {
-      h2.textContent = translations[lang].aboutTitle;
-    }
-
-    if (text.includes("Skills") || text.includes("Vaardigheden")) {
-      h2.textContent = translations[lang].skillsTitle;
-    }
-
-    if (text.includes("Education") || text.includes("Opleiding")) {
-      h2.textContent = translations[lang].educationTitle;
-    }
-
-    if (text.includes("Contact me") || text.includes("Contact opnemen")) {
-      h2.textContent = translations[lang].contactTitle;
-    }
-  });
-
-  // CONTACT FORM TITLE
-  const formTitle = document.querySelector(".contact-form h2");
-  if (formTitle) {
-    formTitle.textContent = translations[lang].sendMessage;
-  }
-
-  // BUTTON LABEL
+  // Toggle button text
   const btn = document.getElementById("langBtn");
   if (btn) btn.textContent = lang === "en" ? "NL" : "EN";
 
-  // SAVE LANGUAGE
+  // Save language
   localStorage.setItem("lang", lang);
 }
-
 
 // =========================
 // INIT
 // =========================
 
 document.addEventListener("DOMContentLoaded", () => {
-
   const savedLang = localStorage.getItem("lang") || "en";
   translatePage(savedLang);
 
   const btn = document.getElementById("langBtn");
-
   if (btn) {
     btn.addEventListener("click", () => {
       translatePage(currentLang === "en" ? "nl" : "en");
     });
   }
-
 });
