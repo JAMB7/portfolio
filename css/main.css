@@ -78,3 +78,37 @@ nav a {
   border-radius: 10px;
   border: none;
 }
+
+/* PROJECTS */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.projects-grid img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* ART */
+.art-grid {
+  column-count: 3;
+  column-gap: 20px;
+}
+
+.art-grid img {
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 16px;
+}
+
+@media (max-width: 768px) {
+  .art-grid { column-count: 2; }
+}
+
+@media (max-width: 500px) {
+  .art-grid { column-count: 1; }
+}

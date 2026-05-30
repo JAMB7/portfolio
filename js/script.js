@@ -21,9 +21,8 @@ window.addEventListener("load", () => {
 
 
 // =========================
-// TRANSLATION SYSTEM (FULL FIXED VERSION)
+// TRANSLATIONS
 // =========================
-
 const translations = {
   en: {
     home: "Home",
@@ -37,34 +36,42 @@ const translations = {
 
     aboutTitle: "About me 👩🏽‍🦲",
     aboutText:
-      "A curious, open-minded, and thoughtful person who enjoys learning about new ideas and perspectives, exploring different areas of knowledge, and embracing new experiences.",
+      "A curious, open-minded, and thoughtful person who enjoys learning and new experiences.",
 
-    aboutFocusTitle: "I am currently focused on professional growth through:",
+    aboutFocusTitle: "I am currently focused on:",
     aboutFocus1: "New experiences",
     aboutFocus2: "Collaboration",
     aboutFocus3: "Continuous learning",
 
     interestsTitle: "Interests 🖼️",
     interestsText:
-      "I enjoy deep thinking, drawing, painting, lofi music, fitness, swimming, kickboxing, dancing, trying new foods, meditation, sunsets and nature.",
+      "Drawing, music, fitness, swimming, kickboxing, nature and more.",
 
     educationTitle: "Education 📚",
 
-    workTitle: "Recent work Experience 📈",
+    workTitle: "Recent work experience 📈",
     work1: "Salon Assistant & Social Media Coordinator at Beauty by Pascalle",
     work2: "Enquiry Projects & Data Processing at Suribet",
+    work2desc: "Data collection and processing tasks",
     work3: "Part-time IT Assistant at SuriTech",
 
-    contactTitle: "Contact me",
-    sendMessageTitle: "Send me a message",
-    sendMessage: "Send Message ✨",
+    projectsTitle: "Projects 🖼️",
+    project1Title: "Lofi portfolio website 🌟",
+    project1Desc: "A cozy personal portfolio built with HTML, CSS and JS",
+    project1Tech: "Built with: HTML, CSS, JavaScript",
+    project1View: "View project",
 
-    phone: "Phone:",
-    email: "Email:",
+    artTitle: "Art Work 🎨",
+    artQuote: "To me, art is whatever you perceive.",
 
     skillsTitle: "Skills",
+    skill1: "Visualizing 🖼️",
+    skill2: "Problem-solving 🧩",
+    skill3: "Detail-oriented 🧤",
+    skill4: "Open-minded 👂",
 
-    // FORM PLACEHOLDERS
+    sendMessage: "Send Message ✨",
+
     namePlaceholder: "Your name",
     emailPlaceholder: "Your email",
     messagePlaceholder: "Write your message..."
@@ -82,34 +89,42 @@ const translations = {
 
     aboutTitle: "Over mij 👩🏽‍🦲",
     aboutText:
-      "Een nieuwsgierig, open-minded en bedachtzaam persoon die graag leert over nieuwe ideeën en perspectieven en nieuwe ervaringen omarmt.",
+      "Een nieuwsgierig en open-minded persoon die graag leert en nieuwe ervaringen opdoet.",
 
-    aboutFocusTitle: "Ik richt mij op professionele groei door:",
+    aboutFocusTitle: "Ik focus mij op:",
     aboutFocus1: "Nieuwe ervaringen",
     aboutFocus2: "Samenwerking",
     aboutFocus3: "Voortdurend leren",
 
     interestsTitle: "Interesses 🖼️",
     interestsText:
-      "Ik houd van tekenen, muziek, fitness, zwemmen, kickboksen, dansen en natuur.",
+      "Tekenen, muziek, fitness, zwemmen, kickboksen en natuur.",
 
     educationTitle: "Opleiding 📚",
 
     workTitle: "Recente werkervaring 📈",
-    work1: "Salon assistent & social media coördinator bij Beauty by Pascalle",
-    work2: "Enquête projecten & data verwerking bij Suribet",
-    work3: "Parttime IT assistent bij SuriTech",
+    work1: "Salon assistent & social media bij Beauty by Pascalle",
+    work2: "Enquête & data verwerking bij Suribet",
+    work2desc: "Data verzamelen en verwerken",
+    work3: "IT assistent bij SuriTech",
 
-    contactTitle: "Contact opnemen",
-    sendMessageTitle: "Stuur mij een bericht",
-    sendMessage: "Verstuur Bericht ✨",
+    projectsTitle: "Projecten 🖼️",
+    project1Title: "Lofi portfolio website 🌟",
+    project1Desc: "Een persoonlijk portfolio gebouwd met HTML, CSS en JS",
+    project1Tech: "Gebouwd met: HTML, CSS, JavaScript",
+    project1View: "Bekijk project",
 
-    phone: "Telefoon:",
-    email: "E-mail:",
+    artTitle: "Kunst 🎨",
+    artQuote: "Kunst is wat jij erin ziet.",
 
     skillsTitle: "Vaardigheden",
+    skill1: "Visualiseren 🖼️",
+    skill2: "Probleemoplossend 🧩",
+    skill3: "Detailgericht 🧤",
+    skill4: "Open-minded 👂",
 
-    // FORM PLACEHOLDERS
+    sendMessage: "Bericht versturen ✨",
+
     namePlaceholder: "Jouw naam",
     emailPlaceholder: "Jouw e-mail",
     messagePlaceholder: "Schrijf je bericht..."
@@ -118,49 +133,38 @@ const translations = {
 
 let currentLang = "en";
 
-
 // =========================
 // TRANSLATE FUNCTION
 // =========================
 function translatePage(lang) {
   currentLang = lang;
 
-  // TEXT TRANSLATION
-  document.querySelectorAll("[data-i18n]").forEach((el) => {
+  document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
     if (translations[lang][key]) {
       el.textContent = translations[lang][key];
     }
   });
 
-  // PLACEHOLDER TRANSLATION (NEW FIX)
-  document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
     const key = el.getAttribute("data-i18n-placeholder");
     if (translations[lang][key]) {
       el.placeholder = translations[lang][key];
     }
   });
 
-  // Toggle button text
   const btn = document.getElementById("langBtn");
   if (btn) btn.textContent = lang === "en" ? "NL" : "EN";
 
-  // Save language
   localStorage.setItem("lang", lang);
 }
 
-
-// =========================
 // INIT
-// =========================
 document.addEventListener("DOMContentLoaded", () => {
-  const savedLang = localStorage.getItem("lang") || "en";
-  translatePage(savedLang);
+  const saved = localStorage.getItem("lang") || "en";
+  translatePage(saved);
 
-  const btn = document.getElementById("langBtn");
-  if (btn) {
-    btn.addEventListener("click", () => {
-      translatePage(currentLang === "en" ? "nl" : "en");
-    });
-  }
+  document.getElementById("langBtn")?.addEventListener("click", () => {
+    translatePage(currentLang === "en" ? "nl" : "en");
+  });
 });
