@@ -14,6 +14,10 @@ body {
   background: linear-gradient(180deg, #0b1026, #1a1b3a, #2a1b3f);
   min-height: 100vh;
   position: relative;
+
+  /* fixes blur issues in some browsers */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* =========================
@@ -30,7 +34,8 @@ body::before {
   background-size: 90px 90px, 130px 130px, 170px 170px;
   background-position: 0 0, 40px 60px, 20px 30px;
   opacity: 0.25;
-  z-index: -1;
+  z-index: -2;
+  pointer-events: none;
 }
 
 body::after {
@@ -39,6 +44,7 @@ body::after {
   inset: 0;
   background: radial-gradient(circle at 50% 40%, rgba(255, 182, 255, 0.12), transparent 60%);
   z-index: -1;
+  pointer-events: none;
 }
 
 /* =========================
@@ -49,7 +55,10 @@ nav {
   padding: 20px;
   position: fixed;
   top: 0;
+  z-index: 1000;
+
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 nav ul {
@@ -83,16 +92,21 @@ nav a:hover {
   align-items: center;
   text-align: center;
   padding: 20px;
+
+  position: relative;
+  z-index: 1; /* prevents background interference */
 }
 
 h1 {
   font-size: 1.8rem;
   text-shadow: 0 0 10px rgba(255, 200, 255, 0.2);
+  margin-bottom: 2px;
 }
 
 .hero p {
   font-size: 1.3rem;
   color: #bcd4ff;
+  margin: 2px 0;
 }
 
 .profile-pic {
@@ -114,8 +128,11 @@ h1 {
   padding: 15px 20px;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: 16px;
+
   transition: 0.3s ease;
+  will-change: transform;
 }
 
 .section:hover {
@@ -147,7 +164,6 @@ h2 {
   padding: 12px 20px;
   background: rgba(255,255,255,0.08);
   border-radius: 30px;
-  backdrop-filter: blur(8px);
 }
 
 /* =========================
@@ -164,32 +180,14 @@ a:hover {
 }
 
 /* =========================
-   GLOBAL PAGE OFFSET
+   PAGE OFFSET
    ========================= */
 .page-content {
   padding-top: 100px;
 }
 
 /* =========================
-   MOBILE
-   ========================= */
-@media (max-width: 768px) {
-  h1 { font-size: 1.5rem; }
-  .hero p { font-size: 1rem; }
-  .profile-pic { width: 140px; height: 140px; }
-  nav ul { gap: 15px; }
-  h2 { font-size: 1.2rem; }
-}
-.hero h1 {
-  margin-bottom: 2px;
-}
-
-.hero p {
-  margin: 2px 0;
-}
-
-/* =========================
-   LISTS INSIDE SECTIONS
+   LISTS
    ========================= */
 .section ul {
   margin: 8px 0 18px 18px;
@@ -197,10 +195,10 @@ a:hover {
   line-height: 1.6;
   color: #e5dcff;
 }
+
 /* =========================
    LANGUAGE BUTTON
    ========================= */
-
 #langBtn {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -218,8 +216,18 @@ a:hover {
   transform: scale(1.05);
 }
 
-/* OPTIONAL: better alignment inside navbar */
 nav ul li button {
   display: flex;
   align-items: center;
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+@media (max-width: 768px) {
+  h1 { font-size: 1.5rem; }
+  .hero p { font-size: 1rem; }
+  .profile-pic { width: 140px; height: 140px; }
+  nav ul { gap: 15px; }
+  h2 { font-size: 1.2rem; }
 }
