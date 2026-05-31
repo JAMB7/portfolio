@@ -220,11 +220,14 @@ a:hover {
 }
 
 /* =========================
-LANGUAGE SWITCHER BUTTON
+LANGUAGE SWITCHER BUTTON (ORIGINAL FIXED STYLE)
 ========================= */
 
 .lang-btn {
-  padding: 6px 10px;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  padding: 8px 12px;
   border-radius: 20px;
   border: none;
   background: rgba(255,255,255,0.1);
@@ -239,10 +242,3 @@ LANGUAGE SWITCHER BUTTON
   background: rgba(255,255,255,0.2);
 }
 
-/* Center title + button */
-.section-title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
