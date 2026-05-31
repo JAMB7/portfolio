@@ -211,3 +211,25 @@ a:hover {
   color: #e5dcff;
 }
 
+
+/*   =========================
+LANGUAGE SWITCHER BUTTON (placed in top right corner, visible on all pages
+=========================*/
+.lang-btn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: 0.3s;
+}
+
+.lang-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
